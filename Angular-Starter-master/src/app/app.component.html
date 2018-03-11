@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-sm-1">
+    <img src="">
+  </div>
+
+
+
+  <div class="col-sm-11">
+    <ul class="nav nav-tabs ">
+      <li class="active">
+        <a>Basics</a>
+      </li>
+      <li>
+        <a>Imagine #1</a>
+      </li>
+      <li>
+        <a>Imagine #2</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<br>
+<div class="container">
+
+    <form id="myname">
+      <div class="form-group">
+        <label for="id1">Book ID</label>
+        <input type="text" class="form-control" id="id1" placeholder="Enter ID" name= "id" [(ngModel)]="book.id">
+      </div>
+      <div class="form-group">
+        <label for="nam1">Book Name</label>
+        <input type="text" class="form-control" id="nam1" placeholder="Enter Name" name= "name" [(ngModel)]="book.name">
+      </div>
+      <div class="form-group">
+          <label for="auth1">Book Author</label>
+          <input type="text" class="form-control" id="auth1" placeholder="Enter Author" name= "auth" [(ngModel)]="book.auth">
+        </div>
+        <div class="form-group">
+          <label for="price1">Book Price</label>
+          <input type="text" class="form-control" id="price1" placeholder="Enter Price" name= "price" [(ngModel)]="book.price">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="saveBook()">Save</button>
+        <button type="reset" class="btn btn-primary">Clear</button>
+    </form>
+  
+    <br>
+    <br>
+    <h4>{{email}} </h4>
+    <h4>{{password}}</h4>
+
+
+  <br>
+  <br>
+  <button type="button" class="btn" (click)="viewClicked()" *ngIf="showView">Show Table</button>
+  <button type="button" class="btn" (click)="viewClicked()" *ngIf="!showView">Hide Table</button>
+
+  <table class="table" *ngIf="!showView">
+    <thead>
+      <tr>
+        <th>Book Number</th>
+        <th>Book Name</th>
+        <th>Author</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{book.id}}</td>
+        <td>{{book.name}}</td>
+        <td>{{book.auth}}</td>
+        <td>{{book.price}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <br>
+  <br>
+  <div class="jumbotron">
+    <p>Click button to see a message.</p>
+    <p>{{dateText}}</p>
+  </div>
+</div>
+
+<div class="container" *ngIf="buttonFlag">
+  <div class="alert alert-success alert-dismissable ">
+    <a href="#" class="close" data-dismiss="alert" (click)="closeClick()" aria-label="close">x</a>
+    <strong>Success!</strong> You clicked the button
+  </div>
+</div>
+
+<div class="container">
+  <button type="button" class="btn btn-success" (click)="buttonClick()">click me</button>
+  <button type="button" class="btn btn-primary" (mouseover)="mouseOver()" (mouseout)="mouseOut()">see date</button>
+  <button type="button" class="btn btn-info" (click)="hobbyClick()">{{hobbyButtonText}}</button>
+</div>
+
+<div class="container" *ngIf="hobbiesFlag">
+  <h3>Hobbies</h3>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let hobby of hobbies;let i=index">
+      {{hobby}}
+      <a href="#" class="close" data-dismiss="alert" (click)="deleteHobby(i)" aria-label="close">x</a>
+    </li>
+  </ul>
+
+  <button type="button" class="btn" (click)="addHobby()">add hobby</button>
+  <button type="button" class="btn" (click)="resetHobby()">reset hobbies</button>
+  <br>
+
+
+</div>
+
+<router-outlet></router-outlet>
